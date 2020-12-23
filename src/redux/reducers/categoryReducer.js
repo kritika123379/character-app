@@ -13,7 +13,6 @@ const initialState = {
 export const categoryReducer = (state = initialState, action) => {
     switch (action.type) {
        case types.GET_CHARACTERS_BY_CATEGORY_SUCCESS:
-         console.log('the action',action);
         return Object.assign({}, state, { 
           fetch_category :action.payload,
           type:action.type,

@@ -17,6 +17,7 @@ class CharacterDetails extends React.Component {
            <h1>Details Character</h1>    
            {character &&
             character.map((item,index)=>{
+              console.log('item is-------->',item)
               return (
                 <DetailCard
                 key={item.char_id}

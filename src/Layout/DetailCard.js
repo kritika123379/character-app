@@ -79,9 +79,6 @@ const {birthday,category,occupation,appearance,portrayed,image,name,nickname,occ
             Nickname:{occupation}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-            Date of birth:
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
             Status:{status}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">

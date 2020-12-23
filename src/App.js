@@ -21,7 +21,6 @@ class App extends Component{
    
   render(){  
     const {characters}=this.props;
-    // console.log('the type is----------------> ',this.props)
     return(
         <div>
           <Routes/>

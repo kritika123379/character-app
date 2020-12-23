@@ -5,7 +5,7 @@ import Characters from "./characters"
 import Pagination from "react-js-pagination";
 import * as type from "../../redux/types/types"
 import PersistentDrawerLeft from "../../Layout/Sidebar";
-import CustomCard from "../../Layout/Card";
+
 
 
 class Views extends Component{

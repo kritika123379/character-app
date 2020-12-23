@@ -8,7 +8,6 @@ export const setSearchCharacterAction = (data) => {
             dispatch({ type: types.GET_SEARCH_CHARACTERS_LOADING });
             const response = await fetch('https://www.breakingbadapi.com/api/character/random')
             const res = await  response.json();
-            console.log('response is',res)
             if(response.statusCode === 200){
                 return dispatch({type: types.GET_SEARCH_CHARACTERS_SUCCESS, payload: res, message: res.message})
             }else{
@@ -29,7 +28,6 @@ export const setSearchCharacterByName= (name) => {
             dispatch({ type: types.GET_SEARCH_BY_NAME_LOADING });
             const response = await fetch(`https://www.breakingbadapi.com/api/characters?name=${name}`)
             const res = await  response.json();
-            console.log('response is',res)
             if(response.status === 200){
                 return dispatch({type: types.GET_SEARCH_BY_NAME_SUCCESS, payload: res, message: res.message})
             }else{

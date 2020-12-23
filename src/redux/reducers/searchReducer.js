@@ -12,7 +12,6 @@ const initialState = {
 export const searchReducer = (state = initialState, action) => {
     switch (action.type) {
        case types.GET_SEARCH_CHARACTERS_SUCCESS:
-         console.log('the action',action);
         return Object.assign({}, state, { 
           search_character :action.payload,
           type:action.type,

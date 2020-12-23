@@ -24,7 +24,6 @@ export const getCharacterByIdAction = (id) => {
             dispatch({ type: types.GET_CHARACTERS_BY_ID_LOADING });
             const response = await fetch(`https://www.breakingbadapi.com/api/characters/${id}`)
             const res = await  response.json();
-            console.log('response is',res)
             if(response.status === 200){
                 return dispatch({type: types.GET_CHARACTERS_BY_ID_SUCCESS, payload: res, message: res.message})
             }else{
