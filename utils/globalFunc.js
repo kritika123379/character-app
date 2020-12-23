@@ -7,6 +7,5 @@ export const _setCharactersdata = (data) => {
 }
 
 export const _removeCharactersData = () => {
-    console.log("remove blog data")
     localStorage.removeItem('blog')
 }
