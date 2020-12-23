@@ -10,19 +10,21 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import { fade} from '@material-ui/core/styles';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InputBase from '@material-ui/core/InputBase';
 import { Card } from '@material-ui/core';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 import {connect} from "react-redux";
+import SearchIcon from '@material-ui/icons/Search';
 import {setSearchCharacterByName,} from "../redux/actions/searchAction";
 import {getCharacterByCategoryAction} from "../redux/actions/characterByCategory";
+import {NavLink,Link} from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -104,10 +106,13 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  right:{
+    marginLeft:400
+  }
 }));
 
  function PersistentDrawerLeft(props) {
-   console.log('selected category is',props)
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -141,9 +146,7 @@ const useStyles = makeStyles((theme) => ({
         })}
       >
         <Toolbar>
-        <Typography variant="h6" noWrap>
-         Character Panel
-         </Typography>
+       
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -151,14 +154,20 @@ const useStyles = makeStyles((theme) => ({
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
-            {/* <MenuIcon /> */}
+            <MenuIcon />
           </IconButton>
-          <div className={classes.search}>
+          <Typography variant="h6" noWrap>
+         Character Panel
+         </Typography>
+          <div
+            style={{marginLeft:50}}
+           className={classes.search}>
             <div className={classes.searchIcon}>
-              {/* <SearchIcon /> */}
+              <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search Characters By Name"
+         
+              placeholder="Filter By Name"
               onChange={handleSearchChange}
               value={searchInput}
               classes={{
@@ -168,15 +177,20 @@ const useStyles = makeStyles((theme) => ({
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Typography variant="h6" noWrap>
+        
+          <Typography noWrap>
            
-            There are {props.selectedName.length} Filtered Characters Name
-          </Typography>
-          <div className={classes.search}>
+           Filtered Characters By Name: {props.selectedName.length} 
+         </Typography>
+         
+          <div
+            style={{marginLeft:50}}
+           className={classes.search}>
             <div className={classes.searchIcon}>
-              {/* <SearchIcon /> */}
+              <SearchIcon />
             </div>
             <InputBase
+            
               placeholder="Filter  By Category"
               onChange={handleCategoryChange}
               value={searchCategoryInput}
@@ -187,9 +201,13 @@ const useStyles = makeStyles((theme) => ({
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Typography variant="h6" noWrap>
-            {/* Persistent drawer */}
-            There are {props.selectedCategory.length} Filtered Categories.
+          
+         <Typography noWrap>
+        Filter CharactersBy Category:{props.selectedCategory.length} 
+        </Typography>
+        
+         <Typography className={classes.right}>
+            Total Characters : {props.characters.length}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -204,32 +222,34 @@ const useStyles = makeStyles((theme) => ({
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {/* {theme.direction === 'ltr' ? 
-            // <ChevronLeftIcon />
+            {theme.direction === 'ltr' ? 
+            <ChevronLeftIcon />
              : 
-            // <ChevronRightIcon />
-            } */}
+           <ChevronRightIcon />
+            }
           </IconButton>
         </div>
         <Divider />
+
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <Link to="/">
+          {['characters'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                
-                {/* {index % 2 === 0 ? 
-              // <InboxIcon /> 
+                {index % 2 === 0 ? 
+              <InboxIcon /> 
               : 
-              // <MailIcon />
-              } */}
+              <MailIcon />
+              }
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
+          </Link>
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Episodes','quotes','deaths'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>    
               </ListItemIcon>
@@ -255,7 +275,8 @@ const useStyles = makeStyles((theme) => ({
 const mapStateToProps = state => {
   return {
       selectedCategory: state.categoryReducer.fetch_category ,
-      selectedName: state.searchdata.search_character
+      selectedName: state.searchdata.search_character,
+      characters:state.characterdata.fetch_Characters
   };
 };
 

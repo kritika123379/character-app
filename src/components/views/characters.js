@@ -14,8 +14,8 @@ class Characters extends React.Component {
     let querystring = "character=" + id
     this.props.history.push(`/character/${querystring}`)
   }
-    render() {
 
+    render() {
       const {characters}=this.props
     
       return(
