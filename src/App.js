@@ -1,25 +1,45 @@
-import logo from './logo.svg';
+import {connect} from "react-redux";
+import React,{Component} from "react";
+import {setCharactersAction } from "./redux/actions/characterAction";
 import './App.css';
+import Characters from "./components/views/characters";
+import Pagination from "react-js-pagination";
+import * as type from "./redux/types/types"
+import Routes from "./Routes";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 15
+    };
+  }
+
+  componentDidMount(){
+    this.props.setCharactersAction()
+  }
+   
+  render(){  
+    const {characters}=this.props;
+    // console.log('the type is----------------> ',this.props)
+    return(
+        <div>
+          <Routes/>
+          <characters
+          characters={characters}
+          type={type}
+          />
+        </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  characters:state.characterdata.fetch_Characters,
+  type:state.characterdata.type 
+})
+
+export default connect( mapStateToProps 
+  ,{setCharactersAction})(App)
+
+
