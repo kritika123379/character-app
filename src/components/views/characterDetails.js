@@ -1,12 +1,8 @@
 import React from "react";
 import PersistentDrawerLeft from "../../Layout/Sidebar"
 import DetailCard from "../../Layout/Card"
-import CustomCard from "../../Layout/Card";
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import {connect} from "react-redux";
-import {getCharacterByIdAction} from "../../redux/actions/characterAction"
-import characters from "./characters";
+
 
 
 class CharacterDetails extends React.Component {
@@ -17,7 +13,6 @@ class CharacterDetails extends React.Component {
            <h1>Details Character</h1>    
            {character &&
             character.map((item,index)=>{
-              console.log('item is-------->',item)
               return (
                 <DetailCard
                 key={item.char_id}

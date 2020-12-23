@@ -92,6 +92,14 @@ export default function CustomCard(props) {
         <Typography variant="body2" color="textSecondary" component="p">
         Occupation:{occupation.map((item,index)=><>{item}</>)}
         </Typography> 
+        <Typography variant="body2" color="textSecondary" component="p">
+        Appearance:{appearance}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+         Portrayed:{portrayed}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+        </Typography> 
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">

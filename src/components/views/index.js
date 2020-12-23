@@ -2,7 +2,6 @@ import {connect} from "react-redux";
 import React,{Component} from "react";
 import {setCharactersAction } from "../../redux/actions/characterAction";
 import Characters from "./characters"
-import Pagination from "react-js-pagination";
 import * as type from "../../redux/types/types"
 import PersistentDrawerLeft from "../../Layout/Sidebar";
 

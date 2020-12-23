@@ -2,8 +2,6 @@ import {connect} from "react-redux";
 import React,{Component} from "react";
 import {setCharactersAction } from "./redux/actions/characterAction";
 import './App.css';
-import Characters from "./components/views/characters";
-import Pagination from "react-js-pagination";
 import * as type from "./redux/types/types"
 import Routes from "./Routes";
 

@@ -1,9 +1,8 @@
 import React from "react";
-import {withRouter,NavLink} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import PersistentDrawerLeft from "../../Layout/Sidebar"
 import CustomCard from "../../Layout/Card";
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import {connect} from "react-redux";
 import {getCharacterByIdAction} from "../../redux/actions/characterAction"
 

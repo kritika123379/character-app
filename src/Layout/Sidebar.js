@@ -24,7 +24,7 @@ import {connect} from "react-redux";
 import SearchIcon from '@material-ui/icons/Search';
 import {setSearchCharacterByName,} from "../redux/actions/searchAction";
 import {getCharacterByCategoryAction} from "../redux/actions/characterByCategory";
-import {NavLink,Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const drawerWidth = 240;
 
